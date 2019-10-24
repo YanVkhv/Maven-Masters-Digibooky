@@ -1,5 +1,6 @@
 package com.mavenmasters.digibooky.domain.db;
 
+import com.mavenmasters.digibooky.domain.book.Author;
 import com.mavenmasters.digibooky.domain.book.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +12,7 @@ import java.util.List;
 class BookDBTest {
 
     BookDB booksDatabase;
+    Book bookWithKnownIsbn;
 
     @BeforeEach
     void init() {
@@ -43,7 +45,10 @@ class BookDBTest {
 
     @Test
     void givenABookDB_whenSearchingSingleBookByISBN_thenReturnCorrectBook() {
-        Book book = (Book) booksDatabase.getAll().values().stream().findFirst().get();
-        Assertions.assertEquals(book, booksDatabase.getByISBN(book.getIsbn()));
+        bookWithKnownIsbn = new Book("123456789", "The life of Brian", "This is a book summary", new Author("Tom", "Thompson"));
+        booksDatabase.getAll().put(bookWithKnownIsbn.getId(), bookWithKnownIsbn);
+        //book.setIsbn("123456789");
+        //booksDatabase.getAll().put(book.getId(), book);
+        Assertions.assertEquals(bookWithKnownIsbn, booksDatabase.getByISBN("123456..."));
     }
 }

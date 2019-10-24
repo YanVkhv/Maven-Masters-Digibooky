@@ -35,7 +35,7 @@ public class BookDB implements Database {
 
     public Book getByISBN(String isbn) {
         return books.values().stream()
-                .filter(book -> book.getIsbn().contains(isbn))
+                .filter(book -> book.getIsbn().matches(isbn))
                 .findFirst()
                 .get();
     }
