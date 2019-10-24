@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="digibooky" />
+        <module name="api" />
+        <module name="domain" />
+        <module name="service" />
       </profile>
     </annotationProcessing>
   </component>
