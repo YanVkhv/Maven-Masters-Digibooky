@@ -49,4 +49,11 @@ public class BookDB implements Database {
     public Book getById(UUID id) {
         return books.get(id);
     }
+
+    public Book getByTitle(String title) {
+        return books.values().stream()
+                .filter(book -> book.getTitle().matches(title))
+                .findFirst()
+                .get();
+    }
 }

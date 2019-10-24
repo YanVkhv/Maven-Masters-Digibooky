@@ -12,11 +12,13 @@ import java.util.List;
 class BookDBTest {
 
     BookDB booksDatabase;
-    Book bookWithKnownIsbn;
+    Book bookWithKnownIsbnAndTitle;
 
     @BeforeEach
     void init() {
         booksDatabase = new BookDB();
+        bookWithKnownIsbnAndTitle = new Book("123456789", "The life of Brian", "This is a book summary", new Author("Tom", "Thompson"));
+        booksDatabase.getAll().put(bookWithKnownIsbnAndTitle.getId(), bookWithKnownIsbnAndTitle);
     }
 
 
@@ -45,10 +47,11 @@ class BookDBTest {
 
     @Test
     void givenABookDB_whenSearchingSingleBookByISBN_thenReturnCorrectBook() {
-        bookWithKnownIsbn = new Book("123456789", "The life of Brian", "This is a book summary", new Author("Tom", "Thompson"));
-        booksDatabase.getAll().put(bookWithKnownIsbn.getId(), bookWithKnownIsbn);
-        //book.setIsbn("123456789");
-        //booksDatabase.getAll().put(book.getId(), book);
-        Assertions.assertEquals(bookWithKnownIsbn, booksDatabase.getByISBN("123456..."));
+        Assertions.assertEquals(bookWithKnownIsbnAndTitle, booksDatabase.getByISBN("123456[0-9]{2,3}"));
+    }
+
+    @Test
+    void givenABookDB_whenSearchingSingleBookByTitle_thenReturnCorrectBook() {
+        Assertions.assertEquals(bookWithKnownIsbnAndTitle, booksDatabase.getByTitle("The life of Br..."));
     }
 }
