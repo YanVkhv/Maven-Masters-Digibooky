@@ -16,6 +16,11 @@ public class MemberDB implements Database {
         return null;
     }
 
+    @Override
+    public Object getById(UUID id) {
+        return null;
+    }
+
     public Member addMember(Member member) {
         members.put(member.getUuid(), member);
         return member;
