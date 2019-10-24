@@ -17,25 +17,27 @@ class BookDBTest {
     @BeforeEach
     void init() {
         booksDatabase = new BookDB();
-        bookWithKnownIsbnTitleAndAuthor = new Book("123456789", "The life of Brian", "This is a book summary", new Author("Brad", "Pitt"));
+        bookWithKnownIsbnTitleAndAuthor = new Book("123456789", "The life of Tom", "This is a book summary", new Author("Brad", "Pitt"));
         booksDatabase.getAll().put(bookWithKnownIsbnTitleAndAuthor.getId(), bookWithKnownIsbnTitleAndAuthor);
     }
 
 
     @Test
     void givenABookDB_whenCreated_thenContains10Books() {
-        Assertions.assertEquals(10, booksDatabase.getAll().size());
+        Assertions.assertEquals(11, booksDatabase.getAll().size());
     }
 
     @Test
     void givenABookDB_whenGettingAllBooks_thenReturnBooksWithISBNTitleAuthorLastNameAndAuthorFirstName() {
         List<Book> result = new ArrayList(booksDatabase.getAll().values());
         for (Book book : result) {
-            Assertions.assertNotEquals("", book.getIsbn().trim());
-            Assertions.assertEquals("The life of Brian", book.getTitle());
-            Assertions.assertEquals("Tom", book.getAuthor().getFirstName());
-            Assertions.assertEquals("Thompson", book.getAuthor().getLastName());
-            Assertions.assertEquals("This is a book summary", book.getSummary());
+            if (!book.equals(bookWithKnownIsbnTitleAndAuthor)) {
+                Assertions.assertNotEquals("", book.getIsbn().trim());
+                Assertions.assertEquals("This is a book summary", book.getSummary());
+                Assertions.assertEquals("The life of Brian", book.getTitle());
+                Assertions.assertEquals("Tom", book.getAuthor().getFirstName());
+                Assertions.assertEquals("Thompson", book.getAuthor().getLastName());
+            }
         }
     }
 
@@ -52,7 +54,7 @@ class BookDBTest {
 
     @Test
     void givenABookDB_whenSearchingSingleBookByTitle_thenReturnCorrectBook() {
-        Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByTitle("The life of Br..."));
+        Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByTitle("The life of ..."));
     }
 
     @Test
