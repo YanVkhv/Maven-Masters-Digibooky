@@ -3,4 +3,4 @@
 #Maven Masters Digibooky
 
 Rules:
-1. Daily standup: 10:00
+1. Daily standup: 10:00.
