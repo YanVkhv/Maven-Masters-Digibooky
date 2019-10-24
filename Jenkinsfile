@@ -17,4 +17,10 @@ pipeline {
         bat 'mvn clean test -pl :domain'}
         }
     }
+    
+     stage('Unit Test Service') {
+        steps{
+        bat 'mvn clean test -pl :service'}
+        }
+    }
 }
