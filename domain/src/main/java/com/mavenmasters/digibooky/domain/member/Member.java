@@ -17,4 +17,24 @@ private String city;
         this.lastName = lastName;
         this.city = city;
     }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public String getInss() {
+        return inss;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getCity() {
+        return city;
+    }
 }
