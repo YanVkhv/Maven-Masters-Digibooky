@@ -7,31 +7,37 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 class BookDBTest {
 
-    Database books;
+    BookDB booksDatabase;
 
     @BeforeEach
     void init() {
-        books = new BookDB();
+        booksDatabase = new BookDB();
     }
 
 
     @Test
     void givenABookDB_whenCreated_thenContains10Books() {
-        Assertions.assertEquals(10, books.getAll().size());
+        Assertions.assertEquals(10, booksDatabase.getAll().size());
     }
 
     @Test
     void givenABookDB_whenGettingAllBooks_thenReturnBooksWithISBNTitleAuthorLastNameAndAuthorFirstName() {
-        List<Book> result = new ArrayList(books.getAll().values());
+        List<Book> result = new ArrayList(booksDatabase.getAll().values());
         for (Book book : result) {
             Assertions.assertNotEquals("", book.getIsbn().trim());
             Assertions.assertEquals("The life of Brian", book.getTitle());
             Assertions.assertEquals("Tom", book.getAuthor().getFirstName());
             Assertions.assertEquals("Thompson", book.getAuthor().getLastName());
+            Assertions.assertEquals("This is a book summary", book.getSummary());
         }
+    }
+
+    @Test
+    void givenABookDB_whenSearchingSingleBookByUUID_thenReturnCorrectBook() {
+        Book b = (Book) booksDatabase.getAll().values().stream().findFirst().get();
+        Assertions.assertEquals(b, booksDatabase.getById(b.getId()));
     }
 }
