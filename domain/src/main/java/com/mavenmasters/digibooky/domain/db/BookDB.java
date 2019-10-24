@@ -56,4 +56,11 @@ public class BookDB implements Database {
                 .findFirst()
                 .get();
     }
+
+    public Book getByAuthor(String name) {
+        return books.values().stream()
+                .filter(book -> book.getAuthor().getFullName().matches(name))
+                .findFirst()
+                .get();
+    }
 }

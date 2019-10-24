@@ -12,13 +12,13 @@ import java.util.List;
 class BookDBTest {
 
     BookDB booksDatabase;
-    Book bookWithKnownIsbnAndTitle;
+    Book bookWithKnownIsbnTitleAndAuthor;
 
     @BeforeEach
     void init() {
         booksDatabase = new BookDB();
-        bookWithKnownIsbnAndTitle = new Book("123456789", "The life of Brian", "This is a book summary", new Author("Tom", "Thompson"));
-        booksDatabase.getAll().put(bookWithKnownIsbnAndTitle.getId(), bookWithKnownIsbnAndTitle);
+        bookWithKnownIsbnTitleAndAuthor = new Book("123456789", "The life of Brian", "This is a book summary", new Author("Brad", "Pitt"));
+        booksDatabase.getAll().put(bookWithKnownIsbnTitleAndAuthor.getId(), bookWithKnownIsbnTitleAndAuthor);
     }
 
 
@@ -47,11 +47,17 @@ class BookDBTest {
 
     @Test
     void givenABookDB_whenSearchingSingleBookByISBN_thenReturnCorrectBook() {
-        Assertions.assertEquals(bookWithKnownIsbnAndTitle, booksDatabase.getByISBN("123456[0-9]{2,3}"));
+        Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByISBN("123456[0-9]{2,3}"));
     }
 
     @Test
     void givenABookDB_whenSearchingSingleBookByTitle_thenReturnCorrectBook() {
-        Assertions.assertEquals(bookWithKnownIsbnAndTitle, booksDatabase.getByTitle("The life of Br..."));
+        Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByTitle("The life of Br..."));
     }
+
+    @Test
+    void givenABookDB_whenSearchingSingleBookByAuthor_thenReturnCorrectBook() {
+        Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByAuthor("Brad ...."));
+    }
+
 }
