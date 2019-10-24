@@ -5,21 +5,22 @@ import com.mavenmasters.digibooky.domain.book.Book;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class BookDB implements Database {
 
-    private HashMap<String, Book> books;
+    private HashMap<UUID, Book> books;
 
     public BookDB() {
         this.books = this.generateBooks();
     }
 
-    private HashMap<String, Book> generateBooks() {
-        HashMap<String, Book> books = new HashMap<>();
+    private HashMap<UUID, Book> generateBooks() {
+        HashMap<UUID, Book> books = new HashMap<>();
         for (int i = 0; i < 10; i++) {
 
-            Book book = new Book(this.generateRandomISBN(), "The life of Brian", new Author("Tom", "Thompson"));
-            books.put(book.getIsbn(), book);
+            Book book = new Book(this.generateRandomISBN(), "The life of Brian", "This is a book summary", new Author("Tom", "Thompson"));
+            books.put(book.getId(), book);
         }
         return books;
     }
@@ -32,12 +33,34 @@ public class BookDB implements Database {
         }
     }
 
+    public Book getByISBN(String isbn) {
+        return books.values().stream()
+                .filter(book -> book.getIsbn().matches(isbn))
+                .findFirst()
+                .get();
+    }
+
     @Override
-    public Map<String, Book> getAll() {
+    public Map<UUID, Book> getAll() {
         return books;
     }
 
-    public Book getBookByISBN(String isbn) {
-        return books.get(isbn);
+    @Override
+    public Book getById(UUID id) {
+        return books.get(id);
+    }
+
+    public Book getByTitle(String title) {
+        return books.values().stream()
+                .filter(book -> book.getTitle().matches(title))
+                .findFirst()
+                .get();
+    }
+
+    public Book getByAuthor(String name) {
+        return books.values().stream()
+                .filter(book -> book.getAuthor().getFullName().matches(name))
+                .findFirst()
+                .get();
     }
 }

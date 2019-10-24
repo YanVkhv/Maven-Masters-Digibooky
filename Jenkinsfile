@@ -12,9 +12,11 @@ pipeline {
             }
         }
 
-        stage('Unit Test Domain') {
-        steps{
-        bat 'mvn clean test -pl :domain'}
+        stage('Unit Test ') {
+            steps{
+                bat 'mvn clean test'
+            }
         }
+
     }
 }
