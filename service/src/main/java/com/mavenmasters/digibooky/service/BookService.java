@@ -4,12 +4,16 @@ import com.mavenmasters.digibooky.domain.book.Author;
 import com.mavenmasters.digibooky.domain.db.BookDB;
 import com.mavenmasters.digibooky.service.dto.BookDto;
 import com.mavenmasters.digibooky.service.dto.BookMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class BookService {
     private final BookDB bookDB;
 
+    @Autowired
     public BookService() {
         this.bookDB = new BookDB();
     }
