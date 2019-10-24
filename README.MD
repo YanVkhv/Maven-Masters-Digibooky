@@ -2,4 +2,5 @@
 
 #Maven Masters Digibooky
 
-Enter shit here
+Rules:
+1. Daily standup: 10:00
