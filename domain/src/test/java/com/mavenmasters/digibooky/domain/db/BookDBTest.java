@@ -37,7 +37,13 @@ class BookDBTest {
 
     @Test
     void givenABookDB_whenSearchingSingleBookByUUID_thenReturnCorrectBook() {
-        Book b = (Book) booksDatabase.getAll().values().stream().findFirst().get();
-        Assertions.assertEquals(b, booksDatabase.getById(b.getId()));
+        Book book = (Book) booksDatabase.getAll().values().stream().findFirst().get();
+        Assertions.assertEquals(book, booksDatabase.getById(book.getId()));
+    }
+
+    @Test
+    void givenABookDB_whenSearchingSingleBookByISBN_thenReturnCorrectBook() {
+        Book book = (Book) booksDatabase.getAll().values().stream().findFirst().get();
+        Assertions.assertEquals(book, booksDatabase.getByISBN(book.getIsbn()));
     }
 }

@@ -33,6 +33,13 @@ public class BookDB implements Database {
         }
     }
 
+    public Book getByISBN(String isbn) {
+        return books.values().stream()
+                .filter(book -> book.getIsbn().contains(isbn))
+                .findFirst()
+                .get();
+    }
+
     @Override
     public Map<UUID, Book> getAll() {
         return books;
