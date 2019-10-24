@@ -11,5 +11,10 @@ pipeline {
                 bat 'mvn clean compile'
             }
         }
+
+        stage('Unit Test Domain') {
+        steps{
+        bat 'mvn clean test -pl :domain'}
+        }
     }
 }
