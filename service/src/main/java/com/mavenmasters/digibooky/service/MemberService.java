@@ -6,12 +6,15 @@ import com.mavenmasters.digibooky.domain.member.Member;
 import com.mavenmasters.digibooky.service.dto.CreateMemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MemberService {
 
     private final MemberDB members;
 
-
+    @Autowired
     public MemberService() {
         this.members = new MemberDB();
     }

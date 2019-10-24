@@ -28,6 +28,14 @@
         <maven.compiler.version>3.8.1</maven.compiler.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.2.0.RELEASE</version>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -67,7 +75,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
 
 </project>
