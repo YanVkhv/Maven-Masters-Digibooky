@@ -9,12 +9,4 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-//	@Bean
-//	public CommandLineRunner demo() {
-//		return (args) -> {
-//			System.out.println("test");
-//
-//		};
-//
-//	}
 }
