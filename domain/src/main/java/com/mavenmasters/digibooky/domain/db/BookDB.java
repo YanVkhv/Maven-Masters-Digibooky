@@ -5,6 +5,7 @@ import com.mavenmasters.digibooky.domain.book.Book;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class BookDB implements Database {
@@ -34,10 +35,16 @@ public class BookDB implements Database {
     }
 
     public Book getByISBN(String isbn) {
-        return books.values().stream()
+        Optional<Book> toReturnBook = books.values().stream()
                 .filter(book -> book.getIsbn().matches(isbn))
-                .findFirst()
-                .get();
+                .findFirst();
+
+        if (!toReturnBook.isPresent()) {
+            toReturnBook = books.values().stream()
+                    .filter(book -> book.getIsbn().contains(isbn))
+                    .findFirst();
+        }
+        return toReturnBook.isPresent() ? toReturnBook.get() : null;
     }
 
     @Override
@@ -51,16 +58,36 @@ public class BookDB implements Database {
     }
 
     public Book getByTitle(String title) {
-        return books.values().stream()
+        Optional<Book> toReturnBook = books.values().stream()
                 .filter(book -> book.getTitle().matches(title))
-                .findFirst()
-                .get();
+                .findFirst();
+
+        if (!toReturnBook.isPresent()) {
+            toReturnBook = books.values().stream()
+                    .filter(book -> book.getTitle().contains(title))
+                    .findFirst();
+        }
+        return toReturnBook.isPresent() ? toReturnBook.get() : null;
     }
 
     public Book getByAuthor(String name) {
-        return books.values().stream()
+        Optional<Book> toReturnBook = books.values().stream()
                 .filter(book -> book.getAuthor().getFullName().matches(name))
-                .findFirst()
-                .get();
+                .findFirst();
+
+        if (!toReturnBook.isPresent()) {
+            toReturnBook = books.values().stream()
+                    .filter(book -> book.getAuthor().getFullName().contains(name))
+                    .findFirst();
+        }
+        return toReturnBook.isPresent() ? toReturnBook.get() : null;
     }
+
+    public Book addBook(Book book) {
+        if (book != null && !book.getTitle().trim().isEmpty() && !book.getIsbn().trim().isEmpty() && !book.getAuthor().getLastName().trim().isEmpty()) {
+            books.put(book.getId(), book);
+        }
+        return book;
+    }
+
 }

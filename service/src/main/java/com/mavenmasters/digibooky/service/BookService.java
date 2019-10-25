@@ -1,7 +1,6 @@
 package com.mavenmasters.digibooky.service;
 
 
-import com.mavenmasters.digibooky.domain.book.Author;
 import com.mavenmasters.digibooky.domain.book.Book;
 import com.mavenmasters.digibooky.domain.db.BookDB;
 import com.mavenmasters.digibooky.service.dto.BookDto;
@@ -9,7 +8,6 @@ import com.mavenmasters.digibooky.service.dto.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -43,5 +41,9 @@ public class BookService {
     public Map<UUID, BookDto> getAllBooks() {
         return this.bookDB.getAll().entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> BookMapper.mapToDto(entry.getValue()), (a, b) -> b));
+    }
+
+    public BookDto addBook(Book book) {
+        return BookMapper.mapToDto(book);
     }
 }

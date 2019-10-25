@@ -7,4 +7,5 @@ public interface Database<T, E> {
     Map<T, E> getAll();
 
     E getById(UUID id);
+
 }
