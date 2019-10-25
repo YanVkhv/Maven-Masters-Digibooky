@@ -1,13 +1,19 @@
 package com.mavenmasters.digibooky.service;
 
+
 import com.mavenmasters.digibooky.domain.book.Author;
+import com.mavenmasters.digibooky.domain.book.Book;
 import com.mavenmasters.digibooky.domain.db.BookDB;
 import com.mavenmasters.digibooky.service.dto.BookDto;
 import com.mavenmasters.digibooky.service.dto.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
+
 
 @Service
 public class BookService {
@@ -27,10 +33,15 @@ public class BookService {
     }
 
     public BookDto getBookByISBN(String isbn) {
-        return BookMapper.mapToDto(this.bookDB.getByTitle(isbn));
+        return BookMapper.mapToDto(this.bookDB.getByISBN(isbn));
     }
 
     public BookDto getBookByAuthor(String name) {
-        return BookMapper.mapToDto(this.bookDB.getByTitle(name));
+        return BookMapper.mapToDto(this.bookDB.getByAuthor(name));
+    }
+
+    public Map<UUID, BookDto> getAllBooks() {
+        return this.bookDB.getAll().entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, entry -> BookMapper.mapToDto(entry.getValue()), (a, b) -> b));
     }
 }
