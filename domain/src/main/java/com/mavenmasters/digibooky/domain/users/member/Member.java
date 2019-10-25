@@ -1,10 +1,7 @@
 package com.mavenmasters.digibooky.domain.users.member;
 
 import com.mavenmasters.digibooky.domain.users.RegisteredUser;
-import com.mavenmasters.digibooky.domain.users.User;
 import com.mavenmasters.digibooky.domain.users.roles.UserRole;
-
-import java.util.UUID;
 
 public class Member extends RegisteredUser {
 

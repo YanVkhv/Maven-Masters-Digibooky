@@ -21,7 +21,7 @@ public class MemberDB implements Database {
     }
 
     public Member addMember(Member member) {
-        members.put(member.getUuid(), member);
+        members.put(member.getId(), member);
         return member;
     }
 

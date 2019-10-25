@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 class MemberTest {
     @Test
     void whenGivenCorrectInput_thenNewMemberIsCreated() {
-        Assertions.assertDoesNotThrow(() -> new Member("123", new Email("test@test.test"), "First", "Lastname", "City"));
+        Assertions.assertDoesNotThrow(() -> new Member("123", "Lastname", new Email("test@test.test"), "First", "City"));
     }
 
     @Test
     void whenGivenWrongEmail_thenErrorIsThrown() {
-        Assertions.assertThrows(IllegalArgumentException.class,() -> new Member("123", new Email("testtest.test"), "First", "Lastname", "City"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Member("123", "Lastname", new Email("testtest.test"), "First", "City"));
     }
 
 

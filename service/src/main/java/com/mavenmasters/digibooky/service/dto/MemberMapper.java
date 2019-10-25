@@ -1,7 +1,6 @@
 package com.mavenmasters.digibooky.service.dto;
 
 import com.mavenmasters.digibooky.domain.users.member.Member;
-import com.mavenmasters.digibooky.domain.users.roles.UserRole;
 
 public class MemberMapper {
 
@@ -14,7 +13,7 @@ public class MemberMapper {
     }
 
     public static MemberDto memberToMemberDto(Member member) {
-        return new MemberDto().setUuid(member.getUuid())
+        return new MemberDto().setUuid(member.getId())
                 .setInss(member.getInss())
                 .setEmail(member.getEmail())
                 .setFirstName(member.getFirstName())
@@ -23,7 +22,7 @@ public class MemberMapper {
     }
 
     public static MemberDtoForAdmins memberToMemberDtoForAdmins(Member member) {
-        return new MemberDtoForAdmins().setUuid(member.getUuid())
+        return new MemberDtoForAdmins().setUuid(member.getId())
                 .setEmail(member.getEmail())
                 .setFirstName(member.getFirstName())
                 .setLastName(member.getLastName())
