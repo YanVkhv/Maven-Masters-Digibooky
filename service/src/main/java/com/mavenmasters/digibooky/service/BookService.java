@@ -8,6 +8,7 @@ import com.mavenmasters.digibooky.service.dto.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -38,12 +39,23 @@ public class BookService {
         return BookMapper.mapToDto(this.bookDB.getByAuthor(name));
     }
 
-    public Map<UUID, BookDto> getAllBooks() {
-        return this.bookDB.getAll().entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, entry -> BookMapper.mapToDto(entry.getValue()), (a, b) -> b));
+    public List<BookDto> getAllBooks() {
+        return this.bookDB.getAll()
+                .values()
+                .stream()
+                .map((book)-> BookMapper.mapToDto(book))
+                .collect(Collectors.toList());
     }
 
     public BookDto addBook(Book book) {
+        return BookMapper.mapToDto(book);
+    }
+
+    public BookDto deleteBook(UUID uuid) {
+        return BookMapper.mapToDto(this.bookDB.getById(uuid));
+    }
+
+    public BookDto updateBook(Book book) {
         return BookMapper.mapToDto(book);
     }
 }
