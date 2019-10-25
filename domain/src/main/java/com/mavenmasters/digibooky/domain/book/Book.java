@@ -9,6 +9,7 @@ public class Book {
 	private  String summary;
 	private  Author author;
 	private boolean isDeleted;
+	private boolean isAvailable;
 
 	public Book(String isbn, String title, String summary, Author author) {
 		this.id = UUID.randomUUID();
@@ -17,6 +18,7 @@ public class Book {
 		this.summary = summary;
 		this.author = author;
 		this.isDeleted = false;
+		this.isAvailable = true;
 	}
 
 	public Book(String isbn, String title, String authorLastName) {
@@ -26,6 +28,7 @@ public class Book {
 		this.summary = "";
 		this.author = new Author("", authorLastName);
 		this.isDeleted = false;
+		this.isAvailable = true;
 	}
 
 	public String getIsbn() {
