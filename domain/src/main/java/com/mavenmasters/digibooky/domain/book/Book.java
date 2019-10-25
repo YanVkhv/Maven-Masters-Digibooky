@@ -17,6 +17,14 @@ public class Book {
 		this.author = author;
 	}
 
+	public Book(String isbn, String title, String authorLastName) {
+		this.id = UUID.randomUUID();
+		this.isbn = isbn;
+		this.title = title;
+		this.summary = "";
+		this.author = new Author("", authorLastName);
+	}
+
 	public String getIsbn() {
 		return isbn;
 	}

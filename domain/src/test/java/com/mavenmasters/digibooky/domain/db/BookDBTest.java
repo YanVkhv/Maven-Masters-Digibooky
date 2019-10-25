@@ -62,4 +62,10 @@ class BookDBTest {
         Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByAuthor("Brad ...."));
     }
 
+    @Test
+    void givenABookDB_whenAddingNewBook_thenDatabaseContainsCorrectBook() {
+        Book newBook = new Book("894361", "New Book", "", new Author("", "Vkhv"));
+        booksDatabase.addBook(newBook);
+        Assertions.assertEquals(booksDatabase.getByAuthor(" Vkh."), newBook);
+    }
 }
