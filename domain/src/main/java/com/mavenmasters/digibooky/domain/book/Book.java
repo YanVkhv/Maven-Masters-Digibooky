@@ -5,9 +5,10 @@ import java.util.UUID;
 public class Book {
 	private final UUID id;
 	private final String isbn;
-	private final String title;
-	private final String summary;
-	private final Author author;
+	private  String title;
+	private  String summary;
+	private  Author author;
+	private boolean isDeleted;
 
 	public Book(String isbn, String title, String summary, Author author) {
 		this.id = UUID.randomUUID();
@@ -15,6 +16,7 @@ public class Book {
 		this.title = title;
 		this.summary = summary;
 		this.author = author;
+		this.isDeleted = false;
 	}
 
 	public Book(String isbn, String title, String authorLastName) {
@@ -23,6 +25,7 @@ public class Book {
 		this.title = title;
 		this.summary = "";
 		this.author = new Author("", authorLastName);
+		this.isDeleted = false;
 	}
 
 	public String getIsbn() {
@@ -44,4 +47,25 @@ public class Book {
 	public UUID getId() {
 		return id;
 	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
+	public void setDeleted(boolean deleted) {
+		isDeleted = deleted;
+	}
+
 }

@@ -17,7 +17,7 @@ class BookDBTest {
     @BeforeEach
     void init() {
         booksDatabase = new BookDB();
-        bookWithKnownIsbnTitleAndAuthor = new Book("123456789", "The life of Tom", "This is a book summary", new Author("Brad", "Pitt"));
+        bookWithKnownIsbnTitleAndAuthor = new Book("123456789", "The life of Andy", "This is a book summary", new Author("Brad", "Pitt"));
         booksDatabase.getAll().put(bookWithKnownIsbnTitleAndAuthor.getId(), bookWithKnownIsbnTitleAndAuthor);
     }
 
@@ -54,7 +54,7 @@ class BookDBTest {
 
     @Test
     void givenABookDB_whenSearchingSingleBookByTitle_thenReturnCorrectBook() {
-        Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByTitle("The life of ..."));
+        Assertions.assertEquals(bookWithKnownIsbnTitleAndAuthor, booksDatabase.getByTitle("The life of ...."));
     }
 
     @Test
@@ -67,5 +67,12 @@ class BookDBTest {
         Book newBook = new Book("894361", "New Book", "", new Author("", "Vkhv"));
         booksDatabase.addBook(newBook);
         Assertions.assertEquals(booksDatabase.getByAuthor(" Vkh."), newBook);
+    }
+
+    @Test
+    void givenABookDB_whenUpdatingExistingBook_thenOldBookIsUpdatedByNewBook() {
+        bookWithKnownIsbnTitleAndAuthor.setTitle("The life of Tom");
+        booksDatabase.updateBook(bookWithKnownIsbnTitleAndAuthor);
+        Assertions.assertEquals("The life of Tom", booksDatabase.getById(bookWithKnownIsbnTitleAndAuthor.getId()).getTitle());
     }
 }

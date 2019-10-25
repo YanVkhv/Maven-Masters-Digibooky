@@ -90,4 +90,26 @@ public class BookDB implements Database {
         return book;
     }
 
+    public Book updateBook(Book book) {
+        Book bookToUpdate = this.getById(book.getId());
+        if (bookToUpdate != null) {
+            bookToUpdate.setAuthor(book.getAuthor());
+            bookToUpdate.setTitle(book.getTitle());
+            bookToUpdate.setSummary(book.getSummary());
+            if (!book.getTitle().trim().isEmpty() && !book.getIsbn().trim().isEmpty() && !book.getAuthor().getLastName().trim().isEmpty()) {
+                books.put(bookToUpdate.getId(), book);
+            }
+        }
+        return book;
+    }
+
+    public Book deleteBook(UUID id) {
+        Book bookToDelete = this.getById(id);
+        if (bookToDelete != null) {
+            bookToDelete.setDeleted(true);
+            books.put(bookToDelete.getId(), bookToDelete);
+        }
+        return bookToDelete;
+    }
+
 }
