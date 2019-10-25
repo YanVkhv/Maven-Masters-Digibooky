@@ -1,6 +1,5 @@
-package com.mavenmasters.digibooky.domain.member;
+package com.mavenmasters.digibooky.domain.users.member;
 
-import java.util.IllegalFormatException;
 import java.util.Objects;
 
 public class Email {

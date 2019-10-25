@@ -1,8 +1,7 @@
 package com.mavenmasters.digibooky.service;
 
 import com.mavenmasters.digibooky.domain.db.MemberDB;
-import com.mavenmasters.digibooky.domain.member.Email;
-import com.mavenmasters.digibooky.domain.member.Member;
+import com.mavenmasters.digibooky.domain.users.member.Member;
 import com.mavenmasters.digibooky.service.dto.CreateMemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDtoForAdmins;
@@ -10,7 +9,6 @@ import com.mavenmasters.digibooky.service.dto.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 

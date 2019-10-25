@@ -1,10 +1,9 @@
 package com.mavenmasters.digibooky.domain.db;
 
-import com.mavenmasters.digibooky.domain.member.Email;
-import com.mavenmasters.digibooky.domain.member.Member;
+import com.mavenmasters.digibooky.domain.users.member.Email;
+import com.mavenmasters.digibooky.domain.users.member.Member;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class MemberDB implements Database {

@@ -1,7 +1,6 @@
 package com.mavenmasters.digibooky.service;
 
-import com.mavenmasters.digibooky.domain.member.Email;
-import com.mavenmasters.digibooky.domain.member.Member;
+import com.mavenmasters.digibooky.domain.users.member.Email;
 import com.mavenmasters.digibooky.service.dto.CreateMemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDtoForAdmins;
@@ -11,8 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 

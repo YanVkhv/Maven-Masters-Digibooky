@@ -1,6 +1,6 @@
 package com.mavenmasters.digibooky.service.dto;
 
-import com.mavenmasters.digibooky.domain.member.Email;
+import com.mavenmasters.digibooky.domain.users.member.Email;
 
 import java.util.Objects;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package com.mavenmasters.digibooky.domain.member;
+package com.mavenmasters.digibooky.domain.users.member;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
