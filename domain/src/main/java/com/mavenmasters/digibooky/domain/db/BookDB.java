@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class BookDB implements Database {
 
@@ -36,11 +38,13 @@ public class BookDB implements Database {
 
     public Book getByISBN(String isbn) {
         Optional<Book> toReturnBook = books.values().stream()
+                .filter(book -> !book.isDeleted())
                 .filter(book -> book.getIsbn().matches(isbn))
                 .findFirst();
 
         if (!toReturnBook.isPresent()) {
             toReturnBook = books.values().stream()
+                    .filter(book -> !book.isDeleted())
                     .filter(book -> book.getIsbn().contains(isbn))
                     .findFirst();
         }
@@ -49,21 +53,26 @@ public class BookDB implements Database {
 
     @Override
     public Map<UUID, Book> getAll() {
-        return books;
+        return books.values().stream()
+                .filter(book -> !book.isDeleted())
+                .collect(Collectors.toMap(Book::getId, book -> book));
     }
 
     @Override
     public Book getById(UUID id) {
-        return books.get(id);
+        Book toReturnBook = books.get(id);
+        return toReturnBook.isDeleted() ? null : toReturnBook;
     }
 
     public Book getByTitle(String title) {
         Optional<Book> toReturnBook = books.values().stream()
+                .filter(book -> !book.isDeleted())
                 .filter(book -> book.getTitle().matches(title))
                 .findFirst();
 
         if (!toReturnBook.isPresent()) {
             toReturnBook = books.values().stream()
+                    .filter(book -> !book.isDeleted())
                     .filter(book -> book.getTitle().contains(title))
                     .findFirst();
         }
@@ -72,11 +81,13 @@ public class BookDB implements Database {
 
     public Book getByAuthor(String name) {
         Optional<Book> toReturnBook = books.values().stream()
+                .filter(book -> !book.isDeleted())
                 .filter(book -> book.getAuthor().getFullName().matches(name))
                 .findFirst();
 
         if (!toReturnBook.isPresent()) {
             toReturnBook = books.values().stream()
+                    .filter(book -> !book.isDeleted())
                     .filter(book -> book.getAuthor().getFullName().contains(name))
                     .findFirst();
         }
