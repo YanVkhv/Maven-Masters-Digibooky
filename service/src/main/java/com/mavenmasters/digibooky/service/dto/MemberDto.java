@@ -1,6 +1,7 @@
 package com.mavenmasters.digibooky.service.dto;
 
 import com.mavenmasters.digibooky.domain.member.Email;
+import com.mavenmasters.digibooky.domain.member.Member;
 
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ public class MemberDto {
     private UUID uuid;
     private String inss;
     private Email email;
+    private String firstName;
     private String lastName;
     private String city;
 
@@ -57,4 +59,12 @@ public class MemberDto {
         return this;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public MemberDto setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
 }

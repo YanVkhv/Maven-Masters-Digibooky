@@ -6,6 +6,7 @@ public class CreateMemberDto {
 
     private String inss;
     private Email email;
+    private String firstName;
     private String lastName;
     private String city;
 
@@ -42,6 +43,15 @@ public class CreateMemberDto {
 
     public CreateMemberDto setCity(String city) {
         this.city = city;
+        return this;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public CreateMemberDto setFirstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 }

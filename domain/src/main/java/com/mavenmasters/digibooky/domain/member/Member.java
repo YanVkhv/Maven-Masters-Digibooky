@@ -4,13 +4,16 @@ import java.util.UUID;
 
 public class Member {
 
-private final UUID uuid;
-private final String inss;
-private Email email;
-private final String lastName;
-private String city;
+    private final UUID uuid;
+    private final String inss;
+    private Email email;
+    private final String firstName;
+    private final String lastName;
+    private String city;
 
-    public Member(String inss, Email email, String lastName, String city) {
+
+    public Member(String inss, Email email, String firstName, String lastName, String city) {
+        this.firstName = firstName;
         this.uuid = UUID.randomUUID();
         this.inss = inss;
         this.email = email;
@@ -36,5 +39,9 @@ private String city;
 
     public String getCity() {
         return city;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 }

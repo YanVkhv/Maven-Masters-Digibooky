@@ -20,6 +20,7 @@ class MemberServiceTest {
                 .setInss("inss")
                 .setEmail(new Email("test@test.com"))
                 .setLastName("Lastname")
+                .setFirstName("FirstName")
                 .setCity("City");
         memberService.createMember(standardMember);
     }
@@ -30,10 +31,12 @@ class MemberServiceTest {
                 .setInss("123")
                 .setEmail(new Email("dsqgdsqg@dsqfgdsgf.sd"))
                 .setLastName("lazgtzate")
+                .setFirstName("FirstName")
                 .setCity("cityyyyy");
         MemberDto memberDto = memberService.createMember(createMemberDto);
         Assertions.assertEquals(createMemberDto.getInss(), memberDto.getInss());
         Assertions.assertEquals(createMemberDto.getEmail(), memberDto.getEmail());
+        Assertions.assertEquals(createMemberDto.getFirstName(),memberDto.getFirstName());
         Assertions.assertEquals(createMemberDto.getLastName(), memberDto.getLastName());
         Assertions.assertEquals(createMemberDto.getCity(), memberDto.getCity());
     }
@@ -44,6 +47,7 @@ class MemberServiceTest {
                 .setInss("inss")
                 .setEmail(new Email("dsqgdsqg@dsqfgdsgf.sd"))
                 .setLastName("lazgtzate")
+                .setFirstName("FirstName")
                 .setCity("cityyyyy");
         Assertions.assertThrows(IllegalArgumentException.class, () -> memberService.createMember(createMemberDto));
     }
@@ -54,6 +58,7 @@ class MemberServiceTest {
                 .setInss("123")
                 .setEmail(new Email("test@test.com"))
                 .setLastName("lazgtzate")
+                .setFirstName("FirstName")
                 .setCity("cityyyyy");
         Assertions.assertThrows(IllegalArgumentException.class, () -> memberService.createMember(createMemberDto));
     }
