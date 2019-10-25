@@ -46,4 +46,9 @@ public class BookDto {
     public void setAuthor(Author author) {
         this.author = author;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Book Details:\t\n%s\t\n%s\t\n%s\t\n%s", getIsbn(), getTitle(), getSummary(), getAuthor());
+    }
 }

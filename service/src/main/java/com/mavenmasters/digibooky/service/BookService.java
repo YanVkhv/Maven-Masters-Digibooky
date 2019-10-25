@@ -43,7 +43,7 @@ public class BookService {
         return this.bookDB.getAll()
                 .values()
                 .stream()
-                .map((book)-> BookMapper.mapToDto(book))
+                .map(BookMapper::mapToDto)
                 .collect(Collectors.toList());
     }
 
@@ -58,4 +58,5 @@ public class BookService {
     public BookDto updateBook(Book book) {
         return BookMapper.mapToDto(book);
     }
+
 }
