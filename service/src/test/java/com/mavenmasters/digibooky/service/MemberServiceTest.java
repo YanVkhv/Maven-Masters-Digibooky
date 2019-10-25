@@ -4,9 +4,13 @@ import com.mavenmasters.digibooky.domain.member.Email;
 import com.mavenmasters.digibooky.domain.member.Member;
 import com.mavenmasters.digibooky.service.dto.CreateMemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDto;
+import com.mavenmasters.digibooky.service.dto.MemberDtoForAdmins;
+import com.mavenmasters.digibooky.service.dto.MemberMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,5 +65,16 @@ class MemberServiceTest {
                 .setFirstName("FirstName")
                 .setCity("cityyyyy");
         Assertions.assertThrows(IllegalArgumentException.class, () -> memberService.createMember(createMemberDto));
+    }
+
+    @Test
+    void givenMemberDBWithThreeMembers_whenAdminAsksList_thenListOfAllMembersIsReturned() {
+        CreateMemberDto secondMember = new CreateMemberDto().setInss("secondinss").setEmail(new Email("second@test.com")).setLastName("Lastname").setFirstName("FirstName").setCity("City");
+        memberService.createMember(secondMember);
+        CreateMemberDto thirdMember = new CreateMemberDto().setInss("thirdinss").setEmail(new Email("third@test.com")).setLastName("Lastname").setFirstName("FirstName").setCity("City");
+        memberService.createMember(thirdMember);
+        List<MemberDtoForAdmins> listOfMembersForAdmin = memberService.getAllMembers();
+        Assertions.assertTrue(listOfMembersForAdmin.contains(MemberMapper.memberToMemberDtoForAdmins(MemberMapper.createMemberDtoToMember(secondMember))));
+        Assertions.assertTrue(listOfMembersForAdmin.contains(MemberMapper.memberToMemberDtoForAdmins(MemberMapper.createMemberDtoToMember(thirdMember))));
     }
 }

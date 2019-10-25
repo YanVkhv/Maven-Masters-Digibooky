@@ -20,4 +20,14 @@ public class MemberMapper {
                 .setLastName(member.getLastName())
                 .setCity(member.getCity());
     }
+
+    public static MemberDtoForAdmins memberToMemberDtoForAdmins(Member member) {
+        return new MemberDtoForAdmins().setUuid(member.getUuid())
+                .setEmail(member.getEmail())
+                .setFirstName(member.getFirstName())
+                .setLastName(member.getLastName())
+                .setCity(member.getCity());
+    }
+
 }
+

@@ -12,8 +12,8 @@ public class MemberDB implements Database {
     private HashMap<UUID, Member> members = new HashMap<>();
 
     @Override
-    public Map getAll() {
-        return null;
+    public HashMap<UUID, Member> getAll() {
+        return members;
     }
 
     @Override
