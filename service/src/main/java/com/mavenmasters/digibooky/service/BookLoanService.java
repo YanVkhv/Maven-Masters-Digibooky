@@ -2,6 +2,8 @@ package com.mavenmasters.digibooky.service;
 
 import com.mavenmasters.digibooky.domain.book.BookLoan;
 import com.mavenmasters.digibooky.domain.db.BookLoanDB;
+import com.mavenmasters.digibooky.service.dto.BookLoanDto;
+import com.mavenmasters.digibooky.service.dto.BookLoanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +16,11 @@ public class BookLoanService {
         this.bookLoanDB = bookLoanDB;
     }
 
-    public BookLoan addBookLoan(BookLoan bookLoan) {
-        this.bookLoanDB.addBookLoan(bookLoan);
-        return bookLoan;
+    public BookLoanDto addBookLoan(BookLoan bookLoan) {
+        return BookLoanMapper.mapToDto(this.bookLoanDB.addBookLoan(bookLoan));
+    }
+
+    public BookLoanDto returnBookLoan(BookLoan bookLoan) {
+        return BookLoanMapper.mapToDto(this.bookLoanDB.returnBookLoan(bookLoan.getId()));
     }
 }

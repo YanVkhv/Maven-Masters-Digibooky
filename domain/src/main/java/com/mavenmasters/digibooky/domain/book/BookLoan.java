@@ -7,6 +7,7 @@ public class BookLoan {
     private final UUID id, memberId;
     private final String bookIsbn;
     private final LocalDate dueDate;
+    private boolean isReturned;
 
     private static final LocalDate DEFAULT_LENDING_TIME = LocalDate.now().plusWeeks(3);
 
@@ -15,6 +16,7 @@ public class BookLoan {
         this.memberId = memberId;
         this.bookIsbn = bookIsbn;
         this.dueDate = dueDate;
+        this.isReturned = false;
     }
 
     public BookLoan(UUID memberId, String bookIsbn) {
@@ -23,5 +25,25 @@ public class BookLoan {
 
     public UUID getId() {
         return id;
+    }
+
+    public void setReturned(boolean returned) {
+        isReturned = returned;
+    }
+
+    public String getBookIsbn() {
+        return bookIsbn;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public boolean isReturned() {
+        return isReturned;
+    }
+
+    public UUID getMemberId() {
+        return memberId;
     }
 }

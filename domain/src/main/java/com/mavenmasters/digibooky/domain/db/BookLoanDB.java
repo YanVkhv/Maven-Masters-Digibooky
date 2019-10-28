@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Repository
 public class BookLoanDB implements Database {
-    private final HashMap<UUID, BookLoan> bookLoans;
+    private HashMap<UUID, BookLoan> bookLoans;
 
     public BookLoanDB() {
         this.bookLoans = new HashMap<>();
@@ -28,6 +28,14 @@ public class BookLoanDB implements Database {
     }
 
     public BookLoan addBookLoan(BookLoan bookLoan) {
-        return this.bookLoans.put(bookLoan.getId(), bookLoan);
+        this.bookLoans.put(bookLoan.getId(), bookLoan);
+        return bookLoan;
+    }
+
+    public BookLoan returnBookLoan(UUID bookLoanId) {
+        BookLoan bookLoan = this.getById(bookLoanId);
+        bookLoan.setReturned(true);
+        bookLoans.put(bookLoan.getId(), bookLoan);
+        return bookLoan;
     }
 }
