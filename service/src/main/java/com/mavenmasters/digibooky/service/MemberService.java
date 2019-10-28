@@ -1,6 +1,7 @@
 package com.mavenmasters.digibooky.service;
 
 import com.mavenmasters.digibooky.domain.db.MemberDB;
+import com.mavenmasters.digibooky.domain.users.member.Email;
 import com.mavenmasters.digibooky.domain.users.member.Member;
 import com.mavenmasters.digibooky.service.dto.CreateMemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDto;
@@ -20,6 +21,7 @@ public class MemberService {
     @Autowired
     public MemberService() {
         this.members = new MemberDB();
+//        members.addMember(new Member("First","Last",new Email("test@testmail.test"),"123456789","City"));
     }
 
     public MemberDto createMember(CreateMemberDto createMemberDto) {

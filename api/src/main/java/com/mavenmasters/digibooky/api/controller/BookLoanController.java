@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/digibooky/books/loans")
+@RequestMapping("/books/loans")
 public class BookLoanController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 

@@ -1,5 +1,6 @@
 package com.mavenmasters.digibooky.service.dto;
 
+import com.mavenmasters.digibooky.domain.users.member.Email;
 import com.mavenmasters.digibooky.domain.users.member.Member;
 
 public class MemberMapper {
@@ -7,7 +8,7 @@ public class MemberMapper {
     public static Member createMemberDtoToMember(CreateMemberDto createMemberDto) {
         return new Member(createMemberDto.getFirstName()
                 , createMemberDto.getLastName()
-                , createMemberDto.getEmail()
+                , new Email(createMemberDto.getEmail())
                 , createMemberDto.getInss()
                 , createMemberDto.getCity());
     }

@@ -5,7 +5,7 @@ import com.mavenmasters.digibooky.domain.users.member.Email;
 public class CreateMemberDto {
 
     private String inss;
-    private Email email;
+    private String email;
     private String firstName;
     private String lastName;
     private String city;
@@ -19,11 +19,11 @@ public class CreateMemberDto {
         return this;
     }
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public CreateMemberDto setEmail(Email email) {
+    public CreateMemberDto setEmail(String email) {
         this.email = email;
         return this;
     }

@@ -6,7 +6,7 @@ public class CreateEmployeeDto {
 
     private String firstName;
     private String lastName;
-    private Email email;
+    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -26,11 +26,11 @@ public class CreateEmployeeDto {
         return this;
     }
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public CreateEmployeeDto setEmail(Email email) {
+    public CreateEmployeeDto setEmail(String email) {
         this.email = email;
         return this;
     }

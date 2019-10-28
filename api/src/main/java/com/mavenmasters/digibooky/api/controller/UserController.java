@@ -6,13 +6,14 @@ import com.mavenmasters.digibooky.service.dto.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
-@RequestMapping("/digibooky/users")
+@RequestMapping("/users")
 public class UserController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -26,27 +27,27 @@ public class UserController {
         logger.info("New UserController has been created.");
     }
 
-    @PostMapping(path = "/{createMemberDto}")
-    @PreAuthorize("hasAnyRole")
-    public MemberDto createMember(@PathVariable CreateMemberDto createMemberDto) {
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+//    @PreAuthorize("hasAnyRole")
+    public MemberDto createMember(@RequestBody CreateMemberDto createMemberDto) {
         return memberService.createMember(createMemberDto);
     }
 
-    @GetMapping
-    @PreAuthorize(value = "hasRole('UserRole.ADMIN')")
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+//    @PreAuthorize(value = "hasRole('UserRole.ADMIN')")
     public List<MemberDtoForAdmins> getAllMembers() {
         return memberService.getAllMembers();
     }
 
-    @PostMapping(path = "/librarian/{createEmployeeDto}")
-    @PreAuthorize(value = "hasRole('UserRole.ADMIN')")
-    public EmployeeDto registerNewLibrarian(@PathVariable CreateEmployeeDto createEmployeeDto) {
+    @PostMapping(path = "/librarian", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+//    @PreAuthorize(value = "hasRole('UserRole.ADMIN')")
+    public EmployeeDto registerNewLibrarian(@RequestBody CreateEmployeeDto createEmployeeDto) {
         return adminService.registerNewLibrarian(createEmployeeDto);
     }
 
-    @PostMapping(path = "/admin/{createEmployeeDto}")
-    @PreAuthorize(value = "hasRole('UserRole.ADMIN')")
-    public EmployeeDto registerNewAdmin(@PathVariable CreateEmployeeDto createEmployeeDto) {
+    @PostMapping(path = "/admin", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+//    @PreAuthorize(value = "hasRole('UserRole.ADMIN')")
+    public EmployeeDto registerNewAdmin(@RequestBody CreateEmployeeDto createEmployeeDto) {
         return adminService.registerNewAdmin(createEmployeeDto);
     }
 
