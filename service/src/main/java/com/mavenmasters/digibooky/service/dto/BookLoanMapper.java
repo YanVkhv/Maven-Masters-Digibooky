@@ -11,4 +11,8 @@ public class BookLoanMapper {
                 bookLoan.isReturned()
                 );
     }
+
+    public static BookLoan mapDtoToBookLoan(BookLoanDto bookLoanDto) {
+        return new BookLoan(bookLoanDto.getMemberUUID(), bookLoanDto.getBookIsbn(), bookLoanDto.getDueDate());
+    }
 }

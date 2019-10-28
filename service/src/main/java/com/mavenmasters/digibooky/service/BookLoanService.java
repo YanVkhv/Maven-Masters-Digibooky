@@ -21,8 +21,8 @@ public class BookLoanService {
         this.bookLoanDB = bookLoanDB;
     }
 
-    public BookLoanDto addBookLoan(BookLoan bookLoan) {
-        return BookLoanMapper.mapToDto(this.bookLoanDB.addBookLoan(bookLoan));
+    public BookLoanDto addBookLoan(BookLoanDto bookLoanDto) {
+        return BookLoanMapper.mapToDto(this.bookLoanDB.addBookLoan(BookLoanMapper.mapDtoToBookLoan(bookLoanDto)));
     }
 
     public BookLoanDto returnBookLoan(BookLoan bookLoan) {
