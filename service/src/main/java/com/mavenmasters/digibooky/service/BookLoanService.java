@@ -42,4 +42,8 @@ public class BookLoanService {
                 .map(BookLoanMapper::mapToDto)
                 .collect(Collectors.toList());
     }
+
+    public BookLoan getNonReturnedBookLoanByBookUuid(UUID id) {
+        return bookLoanDB.getNonReturnedBookLoanByBookUuid(id);
+    }
 }
