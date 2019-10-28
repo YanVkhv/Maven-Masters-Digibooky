@@ -1,6 +1,6 @@
 package com.mavenmasters.digibooky.domain.users.member;
 
-import com.mavenmasters.digibooky.service.exceptions.InvalidEmailAddressException;
+import com.mavenmasters.digibooky.domain.exceptions.InvalidEmailAddressException;
 
 import java.util.Objects;
 
@@ -9,7 +9,7 @@ public class Email {
 
     public Email(String email) {
         if (!isValid(email)) {
-            throw new InvalidEmailAddressException("This is not a valid email address");
+            throw new InvalidEmailAddressException();
         }
         this.email = email;
     }

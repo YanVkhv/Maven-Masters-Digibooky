@@ -1,4 +1,4 @@
-package com.mavenmasters.digibooky.service.exceptions;
+package com.mavenmasters.digibooky.domain.exceptions;
 
 public class DuplicateEmailOrInssException extends RuntimeException {
 
