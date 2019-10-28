@@ -15,3 +15,6 @@ Definition of done:
 
 Kanban board on GitHub:
 https://github.com/YanVkhv/Maven-Masters-Digibooky/projects/1
+
+swagger if running:
+http://localhost:8080/digibooky/swagger-ui.html
