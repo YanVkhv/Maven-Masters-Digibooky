@@ -1,10 +1,12 @@
 package com.mavenmasters.digibooky.domain.db;
 
 import com.mavenmasters.digibooky.domain.book.BookLoan;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.UUID;
 
+@Repository
 public class BookLoanDB implements Database {
     private final HashMap<UUID, BookLoan> bookLoans;
 

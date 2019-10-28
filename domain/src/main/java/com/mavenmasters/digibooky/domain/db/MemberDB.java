@@ -2,10 +2,13 @@ package com.mavenmasters.digibooky.domain.db;
 
 import com.mavenmasters.digibooky.domain.users.member.Email;
 import com.mavenmasters.digibooky.domain.users.member.Member;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.UUID;
 
+@Repository
 public class MemberDB implements Database {
 
     private HashMap<UUID, Member> members = new HashMap<>();

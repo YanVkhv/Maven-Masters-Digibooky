@@ -48,15 +48,15 @@ public class BookService {
     }
 
     public BookDto addBook(Book book) {
-        return BookMapper.mapToDto(book);
+        return BookMapper.mapToDto(this.bookDB.addBook(book));
     }
 
     public BookDto deleteBook(UUID uuid) {
-        return BookMapper.mapToDto(this.bookDB.getById(uuid));
+        return BookMapper.mapToDto(this.bookDB.deleteBook(uuid));
     }
 
     public BookDto updateBook(Book book) {
-        return BookMapper.mapToDto(book);
+        return BookMapper.mapToDto(this.bookDB.updateBook(book));
     }
 
 }

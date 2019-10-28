@@ -2,6 +2,7 @@ package com.mavenmasters.digibooky.domain.db;
 
 import com.mavenmasters.digibooky.domain.book.Author;
 import com.mavenmasters.digibooky.domain.book.Book;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Repository
 public class BookDB implements Database {
 
     private HashMap<UUID, Book> books;

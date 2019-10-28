@@ -11,8 +11,9 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/digibooky/books")
+@RequestMapping(BookController.DIGIBOOKY_CONTROLLER_RESOURCE_URL)
 public class BookController {
+    public static final String DIGIBOOKY_CONTROLLER_RESOURCE_URL = "/digibooky/books";
     private final BookService bookService;
 
     @Autowired
