@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 @Repository
-public class MemberDB implements Database {
+public class MemberDB implements Database<UUID, Member> {
 
     private HashMap<UUID, Member> members = new HashMap<>();
 
@@ -19,8 +19,8 @@ public class MemberDB implements Database {
     }
 
     @Override
-    public Object getById(UUID id) {
-        return null;
+    public Member getById(UUID id) {
+        return members.get(id);
     }
 
     public Member addMember(Member member) {
