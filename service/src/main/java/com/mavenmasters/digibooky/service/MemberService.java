@@ -7,6 +7,7 @@ import com.mavenmasters.digibooky.service.dto.CreateMemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDtoForAdmins;
 import com.mavenmasters.digibooky.service.dto.MemberMapper;
+import com.mavenmasters.digibooky.service.exceptions.DuplicateEmailOrInssException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class MemberService {
 
     public MemberDto createMember(CreateMemberDto createMemberDto) {
         if (members.containsEmailOrInss(createMemberDto.getEmail(), createMemberDto.getInss())) {
-            throw new IllegalArgumentException("This email and/or INSS number already exist(s) in our database.");
+            throw new DuplicateEmailOrInssException();
         }
         Member member = MemberMapper.createMemberDtoToMember(createMemberDto);
         members.addMember(member);

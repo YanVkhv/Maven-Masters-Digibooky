@@ -1,5 +1,7 @@
 package com.mavenmasters.digibooky.domain.users.member;
 
+import com.mavenmasters.digibooky.service.exceptions.InvalidEmailAddressException;
+
 import java.util.Objects;
 
 public class Email {
@@ -7,7 +9,7 @@ public class Email {
 
     public Email(String email) {
         if (!isValid(email)) {
-            throw new IllegalArgumentException("This is not a valid email address");
+            throw new InvalidEmailAddressException("This is not a valid email address");
         }
         this.email = email;
     }
@@ -34,7 +36,4 @@ public class Email {
         return email;
     }
 
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
 }
