@@ -24,7 +24,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(InvalidEmailAddressException.class)
     private void invalidEmailAddressException(InvalidEmailAddressException ex, HttpServletResponse response) throws IOException {
-        response.sendError(412, ex.getMessage());
+        response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, ex.getMessage());
         logger.warn(ex.getMessage());
     }
 

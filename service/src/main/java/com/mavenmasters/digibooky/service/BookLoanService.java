@@ -29,9 +29,9 @@ public class BookLoanService {
         return BookLoanMapper.mapToDto(this.bookLoanDB.returnBookLoan(bookLoan.getId()));
     }
 
-    public List<BookLoanDto> getAllBorrowedBooks(UUID id) {
+    public List<BookLoanDto> getAllBorrowedBooks(UUID memberId) {
         return bookLoanDB.getAll().values().stream()
-                .filter(bookLoan -> bookLoan.getMemberId().equals(id))
+                .filter(bookLoan -> bookLoan.getMemberId().equals(memberId))
                 .map(BookLoanMapper::mapToDto)
                 .collect(Collectors.toList());
     }
@@ -43,7 +43,7 @@ public class BookLoanService {
                 .collect(Collectors.toList());
     }
 
-    public BookLoan getNonReturnedBookLoanByBookUuid(UUID id) {
-        return bookLoanDB.getNonReturnedBookLoanByBookUuid(id);
+    public BookLoan getNonReturnedBookLoanByBookUuid(UUID bookId) {
+        return bookLoanDB.getNonReturnedBookLoanByBookUuid(bookId);
     }
 }

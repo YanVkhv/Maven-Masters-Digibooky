@@ -31,6 +31,7 @@ public class BookLoanDB implements Database {
     }
 
     public BookLoan addBookLoan(BookLoan bookLoan) {
+        bookLoan.setReturned(false);
         this.bookLoans.put(bookLoan.getId(), bookLoan);
         return bookLoan;
     }
