@@ -36,14 +36,14 @@ public class BookController {
     //TODO @PreAuthorize(ROLE_LIBRARIAN)
     @PostMapping(path = "/add", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDtoForUsers addBook(@RequestBody Book book) {
+    public BookDtoForUsers addBook(@RequestBody BookDtoForUsers book) {
         return bookService.addBook(book);
     }
 
     //TODO @PreAuthorize(ROLE_LIBRARIAN)
-    @PostMapping(path = "/delete", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/delete/{id}", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public BookDtoForUsers deleteBook(@RequestBody UUID id) {
+    public BookDtoForUsers deleteBook(@PathVariable UUID id) {
         return bookService.deleteBook(id);
     }
 
@@ -66,23 +66,23 @@ public class BookController {
     }
 
     //TODO @PreAuthorize(ROLE_MEMBER)
-    @GetMapping(path = "/TITLE/")
+    @GetMapping(path = "/TITLE/{title}")
     @ResponseStatus(HttpStatus.OK)
-    public BookDtoForUsers getBookByTitle(String title) {
+    public BookDtoForUsers getBookByTitle(@PathVariable String title) {
         return bookService.getBookByTitle(title);
     }
 
     //TODO @PreAuthorize(ROLE_MEMBER)
-    @GetMapping(path = "/ISBN/")
+    @GetMapping(path = "/ISBN/{isbn}")
     @ResponseStatus(HttpStatus.OK)
-    public BookDtoForUsers getBookByISBN(String isbn) {
+    public BookDtoForUsers getBookByISBN(@PathVariable String isbn) {
         return bookService.getBookByISBN(isbn);
     }
 
     //TODO @PreAuthorize(ROLE_MEMBER)
-    @GetMapping(path = "/AUTHOR/")
+    @GetMapping(path = "/AUTHOR/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public BookDtoForUsers getBookByAuthor(String name) {
+    public BookDtoForUsers getBookByAuthor(@PathVariable String name) {
         return bookService.getBookByAuthor(name);
     }
 }

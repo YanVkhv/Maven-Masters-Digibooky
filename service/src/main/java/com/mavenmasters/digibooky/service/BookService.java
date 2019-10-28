@@ -52,8 +52,8 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
-    public BookDtoForUsers addBook(Book book) {
-        return BookMapper.mapToDto(this.bookDB.addBook(book));
+    public BookDtoForUsers addBook(BookDtoForUsers book) {
+        return BookMapper.mapToDto(this.bookDB.addBook(BookMapper.mapDtoToBook(book)));
     }
 
     public BookDtoForUsers deleteBook(UUID uuid) {
