@@ -19,7 +19,7 @@ class MemberServiceTest {
     void createStandardMember() {
         CreateMemberDto standardMember = new CreateMemberDto()
                 .setInss("inss")
-                .setEmail(new Email("test@test.com"))
+                .setEmail("test@test.com")
                 .setLastName("Lastname")
                 .setFirstName("FirstName")
                 .setCity("City");
@@ -30,7 +30,7 @@ class MemberServiceTest {
     void testCreateMemberHappyPath() {
         CreateMemberDto createMemberDto = new CreateMemberDto()
                 .setInss("123")
-                .setEmail(new Email("dsqgdsqg@dsqfgdsgf.sd"))
+                .setEmail("dsqgdsqg@dsqfgdsgf.sd")
                 .setLastName("lazgtzate")
                 .setFirstName("FirstName")
                 .setCity("cityyyyy");
@@ -46,7 +46,7 @@ class MemberServiceTest {
     void testIfInssOfNewUserIsNotUnique_thenExceptionIsThrown() {
         CreateMemberDto createMemberDto = new CreateMemberDto()
                 .setInss("inss")
-                .setEmail(new Email("dsqgdsqg@dsqfgdsgf.sd"))
+                .setEmail("dsqgdsqg@dsqfgdsgf.sd")
                 .setLastName("lazgtzate")
                 .setFirstName("FirstName")
                 .setCity("cityyyyy");
@@ -57,7 +57,7 @@ class MemberServiceTest {
     void testIfEmailOfNewUserIsNotUnique_thenExceptionIsThrown() {
         CreateMemberDto createMemberDto = new CreateMemberDto()
                 .setInss("123")
-                .setEmail(new Email("test@test.com"))
+                .setEmail("test@test.com")
                 .setLastName("lazgtzate")
                 .setFirstName("FirstName")
                 .setCity("cityyyyy");
@@ -66,9 +66,9 @@ class MemberServiceTest {
 
     @Test
     void givenMemberDBWithThreeMembers_whenAdminAsksList_thenListOfAllMembersIsReturned() {
-        CreateMemberDto secondMember = new CreateMemberDto().setInss("secondinss").setEmail(new Email("second@test.com")).setLastName("Lastname").setFirstName("FirstName").setCity("City");
+        CreateMemberDto secondMember = new CreateMemberDto().setInss("secondinss").setEmail("second@test.com").setLastName("Lastname").setFirstName("FirstName").setCity("City");
         memberService.createMember(secondMember);
-        CreateMemberDto thirdMember = new CreateMemberDto().setInss("thirdinss").setEmail(new Email("third@test.com")).setLastName("Lastname").setFirstName("FirstName").setCity("City");
+        CreateMemberDto thirdMember = new CreateMemberDto().setInss("thirdinss").setEmail("third@test.com").setLastName("Lastname").setFirstName("FirstName").setCity("City");
         memberService.createMember(thirdMember);
         List<MemberDtoForAdmins> listOfMembersForAdmin = memberService.getAllMembers();
         Assertions.assertTrue(listOfMembersForAdmin.contains(MemberMapper.memberToMemberDtoForAdmins(MemberMapper.createMemberDtoToMember(secondMember))));

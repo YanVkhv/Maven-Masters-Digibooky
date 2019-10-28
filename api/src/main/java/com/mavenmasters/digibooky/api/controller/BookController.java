@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
 @RequestMapping(BookController.DIGIBOOKY_CONTROLLER_RESOURCE_URL)
 public class BookController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
-
-    public static final String DIGIBOOKY_CONTROLLER_RESOURCE_URL = "/digibooky/books";
+    public static final String DIGIBOOKY_CONTROLLER_RESOURCE_URL = "/books";
     private final BookService bookService;
 
     @Autowired
@@ -33,16 +34,16 @@ public class BookController {
     }
 
     //TODO @PreAuthorize(ROLE_LIBRARIAN)
-    @PostMapping(path = "/add/{book}")
+    @PostMapping(path = "/add", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDtoForUsers addBook(@PathVariable(value = "book") Book book) {
+    public BookDtoForUsers addBook(@RequestBody Book book) {
         return bookService.addBook(book);
     }
 
     //TODO @PreAuthorize(ROLE_LIBRARIAN)
-    @PostMapping(path = "/delete/{book}")
+    @PostMapping(path = "/delete", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public BookDtoForUsers deleteBook(@PathVariable(value = "book") UUID id) {
+    public BookDtoForUsers deleteBook(@RequestBody UUID id) {
         return bookService.deleteBook(id);
     }
 

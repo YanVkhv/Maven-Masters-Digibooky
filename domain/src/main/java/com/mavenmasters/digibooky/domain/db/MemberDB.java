@@ -28,9 +28,9 @@ public class MemberDB implements Database<UUID, Member> {
         return member;
     }
 
-    public boolean containsEmailOrInss(Email email, String inss) {
+    public boolean containsEmailOrInss(String email, String inss) {
         for (Member member : members.values()) {
-            if (member.getEmail().equals(email) || member.getInss() == inss) {
+            if (member.getEmail().getEmail().equals(email)|| member.getInss() == inss) {
                 return true;
             }
         }
