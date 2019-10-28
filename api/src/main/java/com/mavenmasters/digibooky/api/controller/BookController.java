@@ -3,6 +3,8 @@ package com.mavenmasters.digibooky.api.controller;
 import com.mavenmasters.digibooky.domain.book.Book;
 import com.mavenmasters.digibooky.service.BookService;
 import com.mavenmasters.digibooky.service.dto.BookDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping(BookController.DIGIBOOKY_CONTROLLER_RESOURCE_URL)
 public class BookController {
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
+
     public static final String DIGIBOOKY_CONTROLLER_RESOURCE_URL = "/digibooky/books";
     private final BookService bookService;
 
