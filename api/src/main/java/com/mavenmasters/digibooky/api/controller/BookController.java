@@ -2,6 +2,7 @@ package com.mavenmasters.digibooky.api.controller;
 
 import com.mavenmasters.digibooky.domain.book.Book;
 import com.mavenmasters.digibooky.service.BookService;
+import com.mavenmasters.digibooky.service.dto.BookDtoForMembers;
 import com.mavenmasters.digibooky.service.dto.BookDtoForUsers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,11 +59,18 @@ public class BookController {
         return bookService.updateBook(book);
     }
 
-    //TODO @PreAuthorize(ROLE_MEMBER)
-    @GetMapping(path = "/{uuid}")
+    //TODO @PreAuthorize(ROLE_USER)
+    @GetMapping(path = "/user/{uuid}")
     @ResponseStatus(HttpStatus.OK)
-    public BookDtoForUsers getDetailsOfBook(@PathVariable UUID uuid) {
+    public BookDtoForUsers getDetailsOfBookForUsers(@PathVariable UUID uuid) {
         return bookService.getDetailsOfBookForUsers(uuid);
+    }
+
+    //TODO @PreAuthorize(ROLE_MEMBER)
+    @GetMapping(path = "/member/{uuid}")
+    @ResponseStatus(HttpStatus.OK)
+    public BookDtoForMembers getDetailsOfBookForMembers(@PathVariable UUID uuid) {
+        return bookService.getDetailsOfBookForMembers(uuid);
     }
 
     //TODO @PreAuthorize(ROLE_MEMBER)
