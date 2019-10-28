@@ -2,7 +2,7 @@ package com.mavenmasters.digibooky.api.controller;
 
 import com.mavenmasters.digibooky.domain.book.Book;
 import com.mavenmasters.digibooky.service.BookService;
-import com.mavenmasters.digibooky.service.dto.BookDto;
+import com.mavenmasters.digibooky.service.dto.BookDtoForUsers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,29 +28,29 @@ public class BookController {
     //TODO @PreAuthorize(ROLE_MEMBER)
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<BookDto> getAllBooks() {
+    public List<BookDtoForUsers> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     //TODO @PreAuthorize(ROLE_LIBRARIAN)
     @PostMapping(path = "/add/{book}")
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDto addBook(@PathVariable(value = "book") Book book) {
+    public BookDtoForUsers addBook(@PathVariable(value = "book") Book book) {
         return bookService.addBook(book);
     }
 
     //TODO @PreAuthorize(ROLE_LIBRARIAN)
     @PostMapping(path = "/delete/{book}")
     @ResponseStatus(HttpStatus.OK)
-    public BookDto deleteBook(@PathVariable(value = "book") UUID id) {
+    public BookDtoForUsers deleteBook(@PathVariable(value = "book") UUID id) {
         return bookService.deleteBook(id);
     }
 
     //TODO @PreAuthorize(ROLE_LIBRARIAN)
     @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public BookDto updateBook(@PathVariable UUID id, @RequestBody Book book) {
-        BookDto bookDtoById = bookService.getDetailsOfBook(id);
+    public BookDtoForUsers updateBook(@PathVariable UUID id, @RequestBody Book book) {
+        BookDtoForUsers bookDtoById = bookService.getDetailsOfBookForUsers(id);
         bookDtoById.setTitle(book.getTitle());
         bookDtoById.setSummary(book.getSummary());
         bookDtoById.setAuthor(book.getAuthor());
@@ -60,28 +60,28 @@ public class BookController {
     //TODO @PreAuthorize(ROLE_MEMBER)
     @GetMapping(path = "/{uuid}")
     @ResponseStatus(HttpStatus.OK)
-    public BookDto getDetailsOfBook(@PathVariable UUID uuid) {
-        return bookService.getDetailsOfBook(uuid);
+    public BookDtoForUsers getDetailsOfBook(@PathVariable UUID uuid) {
+        return bookService.getDetailsOfBookForUsers(uuid);
     }
 
     //TODO @PreAuthorize(ROLE_MEMBER)
     @GetMapping(path = "/TITLE/")
     @ResponseStatus(HttpStatus.OK)
-    public BookDto getBookByTitle(String title) {
+    public BookDtoForUsers getBookByTitle(String title) {
         return bookService.getBookByTitle(title);
     }
 
     //TODO @PreAuthorize(ROLE_MEMBER)
     @GetMapping(path = "/ISBN/")
     @ResponseStatus(HttpStatus.OK)
-    public BookDto getBookByISBN(String isbn) {
+    public BookDtoForUsers getBookByISBN(String isbn) {
         return bookService.getBookByISBN(isbn);
     }
 
     //TODO @PreAuthorize(ROLE_MEMBER)
     @GetMapping(path = "/AUTHOR/")
     @ResponseStatus(HttpStatus.OK)
-    public BookDto getBookByAuthor(String name) {
+    public BookDtoForUsers getBookByAuthor(String name) {
         return bookService.getBookByAuthor(name);
     }
 }

@@ -2,13 +2,13 @@ package com.mavenmasters.digibooky.service.dto;
 
 import com.mavenmasters.digibooky.domain.book.Author;
 
-public class BookDto {
+public class BookDtoForUsers {
     private String isbn;
     private String title;
     private String summary;
     private Author author;
 
-    public BookDto(String isbn, String title, String summary, Author author) {
+    public BookDtoForUsers(String isbn, String title, String summary, Author author) {
         this.isbn = isbn;
         this.title = title;
         this.summary = summary;

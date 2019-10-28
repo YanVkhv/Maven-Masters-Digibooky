@@ -71,4 +71,7 @@ public class Book {
 		isDeleted = deleted;
 	}
 
+	public boolean isAvailable() {
+		return isAvailable;
+	}
 }

@@ -125,4 +125,13 @@ public class BookDB implements Database {
         return bookToDelete;
     }
 
+    public Book getByBookId(UUID bookUuid) {
+        for(Book b : books.values()) {
+            if(b.getId().equals(bookUuid)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
 }
