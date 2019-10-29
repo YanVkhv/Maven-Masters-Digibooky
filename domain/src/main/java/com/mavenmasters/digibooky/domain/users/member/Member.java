@@ -7,6 +7,7 @@ public class Member extends RegisteredUser {
 
     private final String inss;
     private String city;
+    private int overdueFines;
 
 
     public Member(String firstName, String lastName, Email email, String inss, String city) {
@@ -23,4 +24,11 @@ public class Member extends RegisteredUser {
         return city;
     }
 
+    public int getOverdueFines() {
+        return overdueFines;
+    }
+
+    public void setOverdueFines(int overdueFines) {
+        this.overdueFines = overdueFines;
+    }
 }
