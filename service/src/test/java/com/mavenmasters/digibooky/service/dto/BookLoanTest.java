@@ -14,7 +14,7 @@ import java.util.UUID;
 
 class BookLoanTest {
 
-    BookLoanService bookLoanService = new BookLoanService(new BookLoanDB());
+    BookLoanService bookLoanService = new BookLoanService(new BookLoanDB(), memberService);
     Member member = new Member("Mave", "Rick", new Email("blabla@bla.bla"), "fzoiufbz", "Brussels");
 
     /*@Test
