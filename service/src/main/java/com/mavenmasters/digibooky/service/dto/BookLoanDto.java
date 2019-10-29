@@ -18,7 +18,6 @@ public class BookLoanDto {
         this.bookIsbn = bookIsbn;
         this.dueDate = dueDate;
         this.isReturned = isReturned;
-
     }
 
     public UUID getMemberUUID() {

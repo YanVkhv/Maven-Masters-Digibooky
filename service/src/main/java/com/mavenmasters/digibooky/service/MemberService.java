@@ -50,4 +50,11 @@ public class MemberService {
                 .findFirst()
                 .get();
     }
+
+    public void addFineToMember(UUID memberId, int overdueFine) {
+        members.getAll().values().stream()
+                .filter(member -> member.getId().equals(memberId))
+                .findFirst()
+                .get().addOverdueFine(overdueFine);
+    }
 }
