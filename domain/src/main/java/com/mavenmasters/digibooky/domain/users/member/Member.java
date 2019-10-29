@@ -31,4 +31,8 @@ public class Member extends RegisteredUser {
     public void setOverdueFines(int overdueFines) {
         this.overdueFines = overdueFines;
     }
+
+    public void addOverdueFine(int overdueFine){
+        this.overdueFines += overdueFine;
+    }
 }

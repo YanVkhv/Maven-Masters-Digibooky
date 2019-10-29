@@ -15,4 +15,13 @@ public class BookLoanMapper {
     public static BookLoan mapDtoToBookLoan(BookLoanDto bookLoanDto) {
         return new BookLoan(bookLoanDto.getMemberUUID(), bookLoanDto.getBookIsbn(), bookLoanDto.getDueDate());
     }
+
+    public static ReturnBookLoanDTO mapToReturnBookLoanDto(BookLoan bookLoan, String returnMessage) {
+        return new ReturnBookLoanDTO(
+                bookLoan.getMemberId(),
+                bookLoan.getBookIsbn(),
+                bookLoan.getDueDate(),
+                bookLoan.isReturned(),
+                returnMessage);
+    }
 }
