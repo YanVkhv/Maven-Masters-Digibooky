@@ -55,7 +55,7 @@ public class BookLoanController {
     }
 
     //TODO getNonReturnedBookLoanByBookUuid
-    @GetMapping(path = "/loans/getBookLoanById/{id}")
+    @GetMapping(path = "/loans/getBookLoanById/{bookId}")
     @ResponseStatus(HttpStatus.OK)
     public BookLoanDto getNonReturnedBookLoanByBookUuid(@PathVariable String bookId) {
         return BookLoanMapper.mapToDto(bookLoanService.getNonReturnedBookLoanByBookUuid(UUID.fromString(bookId)));

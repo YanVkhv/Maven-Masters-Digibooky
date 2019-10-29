@@ -32,7 +32,7 @@ public class Member extends RegisteredUser {
         this.overdueFines = overdueFines;
     }
 
-    public void addOverdueFine(int overdueFine){
+    public void addOverdueFine(int overdueFine) {
         this.overdueFines += overdueFine;
     }
 }

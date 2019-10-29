@@ -1,7 +1,5 @@
 package com.mavenmasters.digibooky.service.dto;
 
-import com.mavenmasters.digibooky.service.BookLoanService;
-
 import java.time.LocalDate;
 import java.util.UUID;
 

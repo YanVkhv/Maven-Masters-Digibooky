@@ -1,9 +1,6 @@
 package com.mavenmasters.digibooky.service.dto;
 
-import com.mavenmasters.digibooky.service.BookLoanService;
-
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 public class BookLoanDto {

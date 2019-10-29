@@ -1,7 +1,5 @@
 package com.mavenmasters.digibooky.service.dto;
 
-import com.mavenmasters.digibooky.domain.users.member.Email;
-
 public class CreateMemberDto {
 
     private String inss;

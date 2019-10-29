@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Repository
@@ -126,8 +125,8 @@ public class BookDB implements Database {
     }
 
     public Book getByBookId(UUID bookUuid) {
-        for(Book b : books.values()) {
-            if(b.getId().equals(bookUuid)) {
+        for (Book b : books.values()) {
+            if (b.getId().equals(bookUuid)) {
                 return b;
             }
         }

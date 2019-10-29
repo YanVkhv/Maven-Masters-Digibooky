@@ -20,7 +20,7 @@ public enum UserFeature {
         return new ArrayList<>(Arrays.asList(userRoles));
     }
 
-    public static List<UserFeature> getUserFeaturesForRoles(List<String> rolesOfUserAsString){
+    public static List<UserFeature> getUserFeaturesForRoles(List<String> rolesOfUserAsString) {
         List<UserRole> rolesOfUser = rolesOfUserAsString.stream()
                 .map(UserRole::valueOf)
                 .collect(Collectors.toList());

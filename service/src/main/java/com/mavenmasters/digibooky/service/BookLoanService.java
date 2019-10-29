@@ -30,7 +30,7 @@ public class BookLoanService {
 
     public BookLoanDto returnBookLoan(BookLoan bookLoan) {
         if (isOverdue(bookLoan)) {
-            memberService.addFineToMember(bookLoan.getMemberId(),calculateOverdueFine(bookLoan));
+            memberService.addFineToMember(bookLoan.getMemberId(), calculateOverdueFine(bookLoan));
         }
         return BookLoanMapper.mapToReturnBookLoanDto(this.bookLoanDB.returnBookLoan(bookLoan.getId()), generateAppropriateMessage(bookLoan));
     }

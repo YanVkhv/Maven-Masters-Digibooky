@@ -3,7 +3,6 @@ package com.mavenmasters.digibooky.domain.db;
 import com.mavenmasters.digibooky.domain.book.Author;
 import com.mavenmasters.digibooky.domain.book.Book;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,11 +28,11 @@ class BookDBTest {
     void givenABookDB_whenGettingAllBooks_thenReturnBooksWithISBNTitleAuthorLastNameAndAuthorFirstName() {
         List<Book> result = new ArrayList(booksDatabase.getAll().values());
         for (Book book : result) {
-                Assertions.assertNotEquals("", book.getIsbn().trim());
-                Assertions.assertEquals("This is a book summary", book.getSummary());
-                Assertions.assertEquals("The life of Brian", book.getTitle());
-                Assertions.assertEquals("Tom", book.getAuthor().getFirstName());
-                Assertions.assertEquals("Thompson", book.getAuthor().getLastName());
+            Assertions.assertNotEquals("", book.getIsbn().trim());
+            Assertions.assertEquals("This is a book summary", book.getSummary());
+            Assertions.assertEquals("The life of Brian", book.getTitle());
+            Assertions.assertEquals("Tom", book.getAuthor().getFirstName());
+            Assertions.assertEquals("Thompson", book.getAuthor().getLastName());
         }
     }
 

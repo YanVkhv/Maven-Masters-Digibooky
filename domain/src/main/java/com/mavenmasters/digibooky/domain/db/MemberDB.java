@@ -1,8 +1,6 @@
 package com.mavenmasters.digibooky.domain.db;
 
-import com.mavenmasters.digibooky.domain.users.member.Email;
 import com.mavenmasters.digibooky.domain.users.member.Member;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -30,7 +28,7 @@ public class MemberDB implements Database<UUID, Member> {
 
     public boolean containsEmailOrInss(String email, String inss) {
         for (Member member : members.values()) {
-            if (member.getEmail().getEmail().equals(email)|| member.getInss() == inss) {
+            if (member.getEmail().getEmail().equals(email) || member.getInss() == inss) {
                 return true;
             }
         }

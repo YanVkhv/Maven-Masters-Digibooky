@@ -9,7 +9,7 @@ public class BookLoanMapper {
                 bookLoan.getBookIsbn(),
                 bookLoan.getDueDate(),
                 bookLoan.isReturned()
-                );
+        );
     }
 
     public static BookLoan mapDtoToBookLoan(BookLoanDto bookLoanDto) {

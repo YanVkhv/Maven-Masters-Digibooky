@@ -1,6 +1,5 @@
 package com.mavenmasters.digibooky.service;
 
-import com.mavenmasters.digibooky.domain.users.member.Email;
 import com.mavenmasters.digibooky.service.dto.CreateMemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDto;
 import com.mavenmasters.digibooky.service.dto.MemberDtoForAdmins;
@@ -37,7 +36,7 @@ class MemberServiceTest {
         MemberDto memberDto = memberService.createMember(createMemberDto);
         Assertions.assertEquals(createMemberDto.getInss(), memberDto.getInss());
         Assertions.assertEquals(createMemberDto.getEmail(), memberDto.getEmail());
-        Assertions.assertEquals(createMemberDto.getFirstName(),memberDto.getFirstName());
+        Assertions.assertEquals(createMemberDto.getFirstName(), memberDto.getFirstName());
         Assertions.assertEquals(createMemberDto.getLastName(), memberDto.getLastName());
         Assertions.assertEquals(createMemberDto.getCity(), memberDto.getCity());
     }

@@ -1,12 +1,10 @@
 package com.mavenmasters.digibooky.domain.db;
 
-import com.mavenmasters.digibooky.domain.book.Book;
 import com.mavenmasters.digibooky.domain.book.BookLoan;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
