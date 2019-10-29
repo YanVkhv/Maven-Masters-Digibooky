@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -16,16 +15,14 @@ import java.util.stream.Collectors;
 @Service
 public class BookLoanService {
     private final BookLoanDB bookLoanDB;
-    private final MemberService memberService;
 
     @Autowired
-    public BookLoanService(BookLoanDB bookLoanDB, MemberService memberService) {
+    public BookLoanService(BookLoanDB bookLoanDB) {
         this.bookLoanDB = bookLoanDB;
-        this.memberService = memberService;
     }
 
-    public BookLoanDto addBookLoan(BookLoanDto bookLoanDto) {
-        return BookLoanMapper.mapToDto(this.bookLoanDB.addBookLoan(BookLoanMapper.mapDtoToBookLoan(bookLoanDto)));
+    public BookLoanDto addBookLoan(BookLoan bookLoan) {
+        return BookLoanMapper.mapToDto(this.bookLoanDB.addBookLoan(bookLoan));
     }
 
     public BookLoanDto returnBookLoan(BookLoan bookLoan) {

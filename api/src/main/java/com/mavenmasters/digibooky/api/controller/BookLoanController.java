@@ -37,18 +37,14 @@ public class BookLoanController {
     @GetMapping(path = "/loans/getAll")
     @ResponseStatus(HttpStatus.OK)
     public List<BookLoanDto> getAllBorrowedBooksForMemberId(UUID memberId) {
-        return bookLoanService.getAllBorrowedBooksForMemberId(memberId).stream()
-                .map(BookLoanMapper::mapToDto)
-                .collect(Collectors.toList());
+        return bookLoanService.getAllBorrowedBooksForMemberId(memberId);
     }
 
     //TODO getAllOverdueBooks
     @GetMapping(path = "/loans/getAllOverdue")
     @ResponseStatus(HttpStatus.OK)
     public List<BookLoanDto> getAllOverdueBooks() {
-        return bookLoanService.getAllOverdueBooks().stream()
-                .map(BookLoanMapper::mapToDto)
-                .collect(Collectors.toList());
+        return bookLoanService.getAllOverdueBooks();
     }
 
     //TODO returnBookLoan
