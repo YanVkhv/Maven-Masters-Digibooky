@@ -21,25 +21,23 @@ public class BookLoanService {
         this.bookLoanDB = bookLoanDB;
     }
 
-    public BookLoanDto addBookLoan(BookLoanDto bookLoanDto) {
-        return BookLoanMapper.mapToDto(this.bookLoanDB.addBookLoan(BookLoanMapper.mapDtoToBookLoan(bookLoanDto)));
+    public BookLoan addBookLoan(BookLoan bookLoan) {
+        return this.bookLoanDB.addBookLoan(bookLoan);
     }
 
-    public BookLoanDto returnBookLoan(BookLoan bookLoan) {
-        return BookLoanMapper.mapToDto(this.bookLoanDB.returnBookLoan(bookLoan.getId()));
+    public BookLoan returnBookLoan(BookLoan bookLoan) {
+        return this.bookLoanDB.returnBookLoan(bookLoan.getId());
     }
 
-    public List<BookLoanDto> getAllBorrowedBooksForMemberId(UUID memberId) {
+    public List<BookLoan> getAllBorrowedBooksForMemberId(UUID memberId) {
         return bookLoanDB.getAll().values().stream()
                 .filter(bookLoan -> bookLoan.getMemberId().equals(memberId))
-                .map(BookLoanMapper::mapToDto)
                 .collect(Collectors.toList());
     }
 
-    public List<BookLoanDto> getAllOverdueBooks() {
+    public List<BookLoan> getAllOverdueBooks() {
         return bookLoanDB.getAll().values().stream()
                 .filter(bookLoan -> bookLoan.getDueDate().isBefore(LocalDate.now()))
-                .map(BookLoanMapper::mapToDto)
                 .collect(Collectors.toList());
     }
 
