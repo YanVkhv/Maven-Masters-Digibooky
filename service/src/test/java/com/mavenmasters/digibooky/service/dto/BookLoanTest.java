@@ -37,7 +37,7 @@ class BookLoanTest {
     void givenAMemberWithBorrowedBooks_whenCallingGetBorrowedBooks_thenGetAllBorrowedBooksForThatMember() {
         bookLoanService.addBookLoan(new BookLoanDto(member.getId(), "fzoifjz", LocalDate.now(), false));
         bookLoanService.addBookLoan(new BookLoanDto(UUID.randomUUID(), "ddsdsd", LocalDate.now(), true));
-        List<BookLoanDto> bookLoans = bookLoanService.getAllBorrowedBooks(member.getId());
+        List<BookLoanDto> bookLoans = bookLoanService.getAllBorrowedBooksForMemberId(member.getId());
         Assertions.assertEquals(1, bookLoans.size());
     }
 

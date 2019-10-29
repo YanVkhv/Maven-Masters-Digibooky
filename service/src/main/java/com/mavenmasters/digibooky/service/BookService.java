@@ -73,5 +73,4 @@ public class BookService {
         return BookMapper.mapToDtoForMember(book, book.isAvailable(), member);
     }
 
-
 }

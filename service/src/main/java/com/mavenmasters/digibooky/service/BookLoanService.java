@@ -29,7 +29,7 @@ public class BookLoanService {
         return BookLoanMapper.mapToDto(this.bookLoanDB.returnBookLoan(bookLoan.getId()));
     }
 
-    public List<BookLoanDto> getAllBorrowedBooks(UUID memberId) {
+    public List<BookLoanDto> getAllBorrowedBooksForMemberId(UUID memberId) {
         return bookLoanDB.getAll().values().stream()
                 .filter(bookLoan -> bookLoan.getMemberId().equals(memberId))
                 .map(BookLoanMapper::mapToDto)
