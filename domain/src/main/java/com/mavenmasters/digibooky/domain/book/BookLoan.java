@@ -46,4 +46,15 @@ public class BookLoan {
     public UUID getMemberId() {
         return memberId;
     }
+
+    @Override
+    public String toString() {
+        return "BookLoan{" +
+                "id=" + id +
+                ", memberId=" + memberId +
+                ", bookIsbn='" + bookIsbn + '\'' +
+                ", dueDate=" + dueDate +
+                ", isReturned=" + isReturned +
+                '}';
+    }
 }

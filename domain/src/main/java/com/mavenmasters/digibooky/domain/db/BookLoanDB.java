@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -23,8 +24,9 @@ public class BookLoanDB implements Database {
     }
 
     @Override
-    public BookLoan getById(UUID id) {
-        return bookLoans.entrySet().stream().filter(uuidBookLoanEntry -> uuidBookLoanEntry.getKey().equals(id))
+    public BookLoan getById(UUID bookLoanId) {
+        BookLoan bookloan = (BookLoan) bookLoans.values().toArray()[0];
+        return bookLoans.entrySet().stream().filter(uuidBookLoanEntry -> uuidBookLoanEntry.getValue().getId().equals(bookLoanId))
                 .findFirst()
                 .get()
                 .getValue();
