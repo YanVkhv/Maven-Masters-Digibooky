@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/books/loans")
+@RequestMapping("/books")
 public class BookLoanController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -34,10 +33,10 @@ public class BookLoanController {
     }
 
     //TODO GetAllBorrowedBooksForMemberId
-    @GetMapping(path = "/loans/getAll")
+    @GetMapping(path = "/loans/getAll/{memberId}")
     @ResponseStatus(HttpStatus.OK)
-    public List<BookLoanDto> getAllBorrowedBooksForMemberId(UUID memberId) {
-        return bookLoanService.getAllBorrowedBooksForMemberId(memberId);
+    public List<BookLoanDto> getAllBorrowedBooksForMemberId(@PathVariable String memberId) {
+        return bookLoanService.getAllBorrowedBooksForMemberId(UUID.fromString(memberId));
     }
 
     //TODO getAllOverdueBooks
@@ -48,7 +47,7 @@ public class BookLoanController {
     }
 
     //TODO returnBookLoan
-    @GetMapping(path = "/loans/returnBookLoan")
+    @PostMapping(path = "/loans/returnBookLoan")
     @ResponseStatus(HttpStatus.OK)
     public BookLoanDto returnBookLoan(@RequestBody BookLoanDto bookLoanDto) {
         bookLoanService.returnBookLoan(BookLoanMapper.mapDtoToBookLoan(bookLoanDto));
@@ -58,7 +57,7 @@ public class BookLoanController {
     //TODO getNonReturnedBookLoanByBookUuid
     @GetMapping(path = "/loans/getBookLoanById/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BookLoanDto getNonReturnedBookLoanByBookUuid(@PathVariable UUID id) {
-        return BookLoanMapper.mapToDto(bookLoanService.getNonReturnedBookLoanByBookUuid(id));
+    public BookLoanDto getNonReturnedBookLoanByBookUuid(@PathVariable String bookId) {
+        return BookLoanMapper.mapToDto(bookLoanService.getNonReturnedBookLoanByBookUuid(UUID.fromString(bookId)));
     }
 }
